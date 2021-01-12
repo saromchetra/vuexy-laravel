@@ -34,38 +34,6 @@
                 {{radios1}}
             </li>
         </ul>
-
-        <template slot="codeContainer">
-
-&lt;ul class=&quot;centerx&quot;&gt;
-  &lt;li&gt;
-    &lt;vs-radio v-model=&quot;radios1&quot; vs-value=&quot;luis&quot;&gt;Luis&lt;/vs-radio&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;vs-radio v-model=&quot;radios1&quot; vs-value=&quot;carols&quot;&gt;Carols&lt;/vs-radio&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;vs-radio v-model=&quot;radios1&quot; vs-value=&quot;summer&quot;&gt;Summer&lt;/vs-radio&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;vs-radio disabled=&quot;true&quot; v-model=&quot;radios1&quot; vs-value=&quot;lyon&quot;&gt;Lyon - disabled&lt;/vs-radio&gt;
-  &lt;/li&gt;
-  &lt;li class=&quot;modelx&quot;&gt;
-    {{ "\{\{ radios1 \}\}" }}
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;script&gt;
-export default {
-  data(){
-    return {
-      radios1:&apos;luis&apos;,
-    }
-  }
-}
-&lt;/script&gt;
-
-        </template>
     </vx-card>
 </template>
 
