@@ -23,12 +23,12 @@
         </span>
 
         <!-- buyNow component -->
-        <component :is="injections.components.BuyNow"></component>
+        <!-- <component :is="injections.components.BuyNow"></component> -->
     </footer>
 </template>
 
 <script>
-import BuyNow from '../../components/BuyNow.vue'
+//import BuyNow from '../../components/BuyNow.vue'
 
 export default {
   name: 'the-footer',
@@ -40,7 +40,7 @@ export default {
   inject: {
     components:{
       default: {
-        BuyNow
+        //BuyNow
       }
     }
   }
