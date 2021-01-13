@@ -42,7 +42,7 @@
                     <div class="p-6 filter-container">
                         <!-- Orientation -->
                         <h6 class="font-bold mb-4">Orientation </h6>
-                        <vs-select placeholder="Select" v-model="orientation">
+                        <vs-select placeholder="Select" v-model="orientation" @change="getPosts(search)">
                           <vs-select-item label="all" value="all" text="All"/>
                           <vs-select-item label="horizontal" value="horizontal" text="Horizontal"/>
                           <vs-select-item label="Vertical" value="vertical" text="Vertical"/>
@@ -54,7 +54,7 @@
                         <h6 class="font-bold mb-4">Category</h6>
                         <ul class="">
                             <li v-for="(item, index) in sections" :key="index" v-bind:value="item">
-                                <vs-radio v-model="catSelected" :vs-value="item.value">{{item.name}}</vs-radio>
+                                <vs-radio v-model="catSelected" :vs-value="item.value" @change="getPosts(search)">{{item.name}}</vs-radio>
                             </li>
                         </ul>
                     </div>
@@ -66,24 +66,12 @@
                         <div class="relative mb-8">
 
                           <!-- SEARCH INPUT -->
-                          <vs-input class="w-full vs-input-shadow-drop vs-input-no-border d-theme-input-dark-bg" placeholder="Search here" v-model="currentRefinement" @input="refine($event)" @keyup.esc="refine('')" size="large" />
-
-                          <!-- SEARCH LOADING -->
-                          <p :hidden="!isSearchStalled" class="mt-4 text-grey">
-                            <feather-icon icon="ClockIcon" svgClasses="w-4 h-4" class="mr-2 align-middle" />
-                            <span>Loading...</span>
-                          </p>
-
+                          <vs-input class="w-full vs-input-shadow-drop vs-input-no-border d-theme-input-dark-bg" placeholder="Search here" size="large" v-model="search" @keyup="getPosts(search)"/>
                           <!-- SEARCH ICON -->
-                          <div slot="submit-icon" class="absolute top-0 right-0 py-4 px-6" v-show="!currentRefinement">
+                          <div slot="submit-icon" class="absolute top-0 right-0 py-4 px-6">
                               <feather-icon icon="SearchIcon" svgClasses="h-6 w-6" />
                           </div>
-
-                          <!-- CLEAR INPUT ICON -->
-                          <div slot="reset-icon" class="absolute top-0 right-0 py-4 px-6" v-show="currentRefinement">
-                              <feather-icon icon="XIcon" svgClasses="h-6 w-6 cursor-pointer" @click="refine('')" />
-                          </div>
-                      
+                          
                         </div>    
                     </div>
                     <image-box v-if="!loading" :results="results"></image-box>
@@ -105,7 +93,7 @@ export default {
   data () {
     return {
       radios1: 'luis',
-      perPage: 40,
+      perPage: 30,
       page: 1,
       totalPage: 5,
       results: [],
@@ -119,23 +107,23 @@ export default {
         },
         {  
           "name":"Architecture/Buildings",
-          "value":"Architecture/Buildings",
+          "value":"Buildings",
         },
         {
           "name":"Backgrounds/Textures",
-          "value":"Backgrounds/Textures",
+          "value":"backgrounds",
         },  
         {
           "name":"Beauty/Fashion",
-          "value":"Beauty/Fashion",
+          "value":"Fashion",
         },
         {
           "name":"Business/Finance",
-          "value":"Business/Finance",
+          "value":"Business",
         },  
         {
           "name":"Computer/Communication",
-          "value":"Computer/Communication",
+          "value":"Computer",
         },
         {
           "name":"Education",
@@ -147,15 +135,15 @@ export default {
         },
         {
           "name":"Food/Drink",
-          "value":"Food/Drink",
+          "value":"Food",
         },
         {
           "name":"Health/Medical",
-          "value":"Health/Medical",
+          "value":"Health",
         },
         {
           "name":"Industry/Craft",
-          "value":"Industry/Craft",
+          "value":"Industry",
         },
         {
           "name":"Music",
@@ -171,7 +159,7 @@ export default {
         },
         {
           "name":"Places/Monuments",
-          "value":"Places/Monuments",
+          "value":"Places",
         },
         {
           "name":"Religion",
@@ -179,7 +167,7 @@ export default {
         },
         {
           "name":"Science/Technology",
-          "value":"Science/Technology",
+          "value":"Science",
         },
         {
           "name":"Sports",
@@ -187,11 +175,11 @@ export default {
         },
         {
           "name":"Transportation/Traffic",
-          "value":"Transportation/Traffic",
+          "value":"Transportation",
         },
         {
           "name":"Travel/Vacation",
-          "value":"Travel/Vacation"
+          "value":"Travel"
         }
       ], // create an array of the sections
       loading: true,
@@ -274,6 +262,8 @@ export default {
 
 
 <style lang="scss">
+
+
 #algolia-instant-search-demo {
   .algolia-header {
     .algolia-filters-label {

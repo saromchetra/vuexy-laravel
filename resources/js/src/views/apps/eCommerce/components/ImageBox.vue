@@ -2,10 +2,10 @@
 <div class="grid">
   
   <div class="vx-row">
-      <div class="vx-col w-full sm:w-1/3 lg:w-1/4 mb-base" :key="index" v-for="post,index in results">
+      <div class="vx-col w-full sm:w-1/4 lg:w-1/3 mb-base" :key="index" v-for="post,index in results">
           <vx-card>
               <div slot="no-body">
-                  <img :src="post.largeImageURL" alt="content-img" class="responsive card-img-top">
+                  <img :src="post.largeImageURL" alt="content-img" class="responsive card-img-top cus-image">
               </div>
           </vx-card>
       </div>
@@ -51,5 +51,11 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.cus-image {
+    max-height: 270px;
+}
+</style>
 
 
