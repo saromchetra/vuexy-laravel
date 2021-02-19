@@ -25,6 +25,7 @@
         "instantsearch.css": "^7.3.1",
         "jsonwebtoken": "^8.5.1",
         "material-icons": "^0.3.1",
+        "numeral": "^2.0.6",
         "perfect-scrollbar": "^1.4.0",
         "postcss-rtl": "^1.5.0",
         "prismjs": "^1.16.0",

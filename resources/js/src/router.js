@@ -49,9 +49,23 @@ const router = new Router({
           redirect: '/dashboard/analytics'
         },
         {
-          path: '/apps/image',
+          path: '/image',
           name: 'image',
           component: () => import('./views/apps/eCommerce/Image.vue'),
+          meta: {
+            breadcrumb: [
+              { title: 'Home', url: '/' },
+              { title: 'eCommerce'},
+              { title: 'Shop', active: true }
+            ],
+            pageTitle: 'Shop',
+            rule: 'editor'
+          }
+        },
+        {
+          path: '/property',
+          name: 'property',
+          component: () => import('./views/apps/eCommerce/Property.vue'),
           meta: {
             breadcrumb: [
               { title: 'Home', url: '/' },

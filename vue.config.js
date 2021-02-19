@@ -20,12 +20,10 @@ module.exports = {
         chunks: 'all'
       }
     }
+  },
+  devServer: {
+    host: 'http://127.0.0.1:8000/',
+    https: true
   }
-  // devServer: {
-  //   overlay: {
-  //     warnings: true,
-  //     errors: true
-  //   }
-  // }
 }
 

@@ -21,11 +21,18 @@
 
 export default [
   {
-    url: "/apps/image",
+    url: "/image",
     name: "Image",
     slug: "image",
     icon: "MailIcon",
     i18n: "Image",
+  }, 
+  {
+    url: "/property",
+    name: "property",
+    slug: "property",
+    icon: "MailIcon",
+    i18n: "property",
   },        
   {
     url: null,

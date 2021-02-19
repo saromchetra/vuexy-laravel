@@ -75,7 +75,11 @@
                         </div>    
                     </div>
                     <image-box v-if="!loading" :results="results"></image-box>
-
+                    <vs-pagination
+                              v-model="pagination"
+                              @change="nextPage(pagination)"
+                              :total="totalRec"
+                              :max="7" />  
                 </div>
             </div>
         </div>
@@ -92,7 +96,8 @@ export default {
   },
   data () {
     return {
-      radios1: 'luis',
+      pagination: 0,
+      totalRec: 0,
       perPage: 30,
       page: 1,
       totalPage: 5,
@@ -222,7 +227,8 @@ export default {
         .then((response) => {
           this.loading = false;
           this.results = response.data.hits;
-          //this.totalPage = response.data.total / this.page;
+          var totalRecs = response.data.totalHits / this.perPage;
+          this.totalRec = totalRecs.toFixed(0);    
           console.log(this.results);
         })
         .catch((error) => {
